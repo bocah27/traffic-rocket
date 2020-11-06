@@ -42,10 +42,7 @@ def login():
     global user
     user = OAuth1Session(CK, CS)
     params = {
-        'oauth_callback': 'http://127.0.0.1:5000/oauth'
-    }
-    params = {
-    'oauth_callback': 'http://127.0.0.1:5000/oauth',
+        'oauth_callback': 'https://traffic-rocket.herokuapp.com/oauth'
     }
     res = user.post('https://api.twitter.com/oauth/request_token', params)
     params = parser(res.text)

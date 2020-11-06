@@ -7,7 +7,7 @@ let del = document.getElementById('delete');
 let url = null;
 let pages;
 let state = 'add';
-const SENDTO = "https://traffic-rocket.herokuapp.com/";
+const SENDTO = "../";
 
 let id;
 

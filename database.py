@@ -10,6 +10,7 @@ host = os.environ.get('MYSQL_HOST')
 def update_user(id_: str, AK: str, AS: str) -> None:
     try:
         cnx = connector.connect(
+            host=host,
             user=user,
             password=password,
             database=database,
@@ -33,6 +34,7 @@ def update_user(id_: str, AK: str, AS: str) -> None:
 def insert_user(id_: str, AK: str, AS: str) -> None:
     try:
         cnx = connector.connect(
+            host=host,
             user=user,
             password=password,
             database=database,
@@ -54,6 +56,7 @@ def insert_user(id_: str, AK: str, AS: str) -> None:
 def is_exist(id_):
     try:
         cnx = connector.connect(
+            host=host,
             user=user,
             password=password,
             database=database,
@@ -83,6 +86,7 @@ def is_exist(id_):
 def delete_user(id_) -> None:
     try:
         cnx = connector.connect(
+            host=host,
             user=user,
             password=password,
             database=database,
@@ -106,6 +110,7 @@ def delete_user(id_) -> None:
 def fetch_all_users():
     try:
         cnx = connector.connect(
+            host=host,
             user=user,
             password=password,
             database=database,

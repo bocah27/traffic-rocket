@@ -162,19 +162,21 @@ def remove():
     url = request.json['url']
 
     with open('datas.json', 'r') as f:
-        obj = json.load(f)
+        datas = json.load(f)
 
-    urls = list(filter(lambda x: x != url, obj[id_]))
-    obj[id_] = urls
+    urls = list(filter(lambda x: x != url, datas[id_]))
+    datas[id_] = urls
     
     with open('datas.json', 'w') as f:
-        json.dump(obj, f)
+        json.dump(datas, f)
 
     obj = {
         'id': id_,
         'url': urls,
         'msg': '{}を削除しました。'.format(url),
     }
+
+    obj = json.dumps(obj)
 
     return jsonify(obj)
 

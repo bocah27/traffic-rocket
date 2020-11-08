@@ -164,7 +164,7 @@ def remove():
     with open('datas.json', 'r') as f:
         obj = json.load(f)
 
-    urls = filter(lambda x: x != url, obj[id_])
+    urls = list(filter(lambda x: x != url, obj[id_]))
     obj[id_] = urls
     
     with open('datas.json', 'w') as f:

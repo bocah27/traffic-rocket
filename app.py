@@ -161,17 +161,18 @@ def remove():
     id_ = request.json['id']
     url = request.json['url']
 
-    with open('datas.json', r) as f:
+    with open('datas.json', 'r') as f:
         obj = json.load(f)
 
-    obj[id_] = filter(lambda x: x != url, obj[id_])
+    urls = filter(lambda x: x != url, obj[id_])
+    obj[id_] = urls
     
     with open('datas.json', 'w') as f:
         json.dump(obj, f)
 
     obj = {
         'id': id_,
-        'url': url,
+        'url': urls,
         'msg': '{}を削除しました。'.format(url),
     }
 

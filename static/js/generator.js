@@ -4,6 +4,7 @@ let remove = document.getElementsByClassName('remove')[0];
 let contents = document.getElementsByClassName('contents')[0];
 let heading = document.getElementsByClassName('heading')[0];
 let del = document.getElementById('delete');
+let msg_box = document.getElementsByClassName('msg')[0];
 let url = null;
 let pages;
 let state = 'add';

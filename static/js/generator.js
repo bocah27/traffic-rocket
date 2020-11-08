@@ -1,6 +1,6 @@
 let url_input = document.getElementById('url');
 let action = document.getElementsByClassName('action')[0];
-let msg_box = document.getElementsByClassName('msg')[0];
+let remove = document.getElementsByClassName('remove')[0];
 let contents = document.getElementsByClassName('contents')[0];
 let heading = document.getElementsByClassName('heading')[0];
 let del = document.getElementById('delete');
@@ -55,6 +55,23 @@ action.addEventListener('click', e => {
             })
         }
     }
+})
+
+remove.addEventListener('click', e => {
+    fetch(SENDTO + 'remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({'id': id, 'url': url})
+    }).then(
+        res => res.json()
+    ).then(data => {
+        let results = JSON.parse(data);
+        messages = results.msg;
+        msg_box.innerHTML = messages;
+        draw_links(results['url'], contents);
+    })
 })
 
 del.addEventListener('click', e => {

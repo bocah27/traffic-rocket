@@ -156,6 +156,27 @@ def update():
 
     return jsonify(obj)
 
+@app.route('/remove', methods=['POST'])
+def remove():
+    id_ = request.json['id']
+    url = request.json['url']
+
+    with open('datas.json', r) as f:
+        obj = json.load(f)
+
+    obj[id_] = filter(lambda x: x != url, obj[id_])
+    
+    with open('datas.json', 'w') as f:
+        json.dump(obj, f)
+
+    obj = {
+        'id': id_,
+        'url': url,
+        'msg': '{}を削除しました。'.format(url),
+    }
+
+    return jsonify(obj)
+
 @app.route('/delete', methods=['POST'])
 def delete_user():
     id_ = request.json['id']
